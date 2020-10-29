@@ -1,0 +1,19 @@
+.spacing {
+    -fx-padding: 10px;
+}
+
+TableView {
+    -fx-table-cell-border-color: black;
+}
+
+.table-row-cell:empty {
+    -fx-table-cell-border-color: white;
+}
+
+Label {
+    -fx-padding: 0px 5px 0px 10px;
+}
+
+TextField {
+    -fx-max-width: 100px;
+}
