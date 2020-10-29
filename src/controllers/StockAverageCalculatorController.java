@@ -23,6 +23,7 @@ public class StockAverageCalculatorController {
 
     private final String DIGITS_ONLY_REGEX = "\\d*";
     private final String DECIMAL_NUMBER_ONLY_REGEX = "\\d*(\\.\\d*)?";
+    private final String FIELD_DELIMITER = ",";
 
     @FXML
     public void initialize() {
@@ -126,7 +127,7 @@ public class StockAverageCalculatorController {
         if(file != null) {
             FileWriter fileWriter = new FileWriter(file, false);
             for(StockModel model : tableView.getItems()) {
-                fileWriter.write(model.getNumberOfShares() + "," + model.getCostPerShare() + "\n");
+                fileWriter.write(model.getNumberOfShares() + FIELD_DELIMITER + model.getCostPerShare() + "\n");
             }
             fileWriter.close();
         }
@@ -193,8 +194,7 @@ public class StockAverageCalculatorController {
     }
 
     private StockModel createModel(String line) throws Exception {
-        String fieldDelimiter = ",";
-        String[] fields = line.split(fieldDelimiter, -1);
+        String[] fields = line.split(FIELD_DELIMITER, -1);
 
         if(!checkValidityOfFields(fields)) {
             throw new Exception();
